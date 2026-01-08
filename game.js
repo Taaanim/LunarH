@@ -207,7 +207,7 @@ class ImposterHunt {
         // Meeting
         document.getElementById('btnSendEmotion')?.addEventListener('click', () => this.sendEmotion());
         document.getElementById('btnSkipVote')?.addEventListener('click', () => this.selectVote('skip'));
-        document.getElementById('btnNextPhase')?.addEventListener('click', () => this.nextMeetingPhase());
+        // Note: btnNextPhase onclick is set dynamically in showMeetingPhase()
         document.getElementById('btnPrevPhase')?.addEventListener('click', () => this.prevMeetingPhase());
 
         this.bindEmotionButtons();
