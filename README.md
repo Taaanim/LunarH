@@ -76,21 +76,12 @@
 - **Imposters**: Equal or outnumber crewmates
 
 ---
-
 ## 📸 Screenshots
 
-![Screenshot 1](ppp/Screenshot_2026-01-08_at_4.51.23_PM.png)
-![Screenshot 2](ppp/Screenshot_2026-01-08_at_4.51.32_PM.png)
-![Screenshot 3](ppp/Screenshot_2026-01-08_at_4.51.43_PM.png)
-![Screenshot 4](ppp/Screenshot_2026-01-08_at_4.51.52_PM.png)
-![Screenshot 5](ppp/Screenshot_2026-01-08_at_4.52.10_PM.png)
-![Screenshot 6](ppp/Screenshot_2026-01-08_at_4.52.36_PM.png)
-![Screenshot 7](ppp/Screenshot_2026-01-08_at_4.53.03_PM.png)
-![Screenshot 8](ppp/Screenshot_2026-01-08_at_4.53.13_PM.png)
-![Screenshot 9](ppp/Screenshot_2026-01-08_at_4.53.43_PM.png)
-![Screenshot 10](ppp/Screenshot_2026-01-08_at_4.53.47_PM.png)
-![Screenshot 11](ppp/Screenshot_2026-01-08_at_4.53.52_PM.png)
+📂 View all screenshots here:  
+🔗 https://drive.google.com/drive/folders/1HtcgffVEQF8eK-htg7WII5H_yTc8TX7P?usp=sharing
 
 ---
 
 <p align="center"><b>🎨 Colors Speak | 🎵 Sounds Reveal | 🎯 Patterns Win</b></p>
+
