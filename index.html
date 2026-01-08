@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Imposter Hunt - A light and sound based social deduction game">
+    <title>Imposter Hunt - Light & Sound Social Deduction Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Stars Background -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- Main Menu Screen -->
+    <div class="screen active" id="mainMenu">
+        <div class="logo-container">
+            <div class="logo-glow"></div>
+            <h1 class="game-logo">
+                <span class="logo-text imposter">IMPOSTER</span>
+                <span class="logo-text hunt">HUNT</span>
+            </h1>
+            <p class="tagline">Light & Sound. Trust No One.</p>
+        </div>
+
+        <div class="menu-buttons">
+            <button class="btn btn-primary" id="btnHostGame">
+                <span class="btn-icon">🚀</span>
+                <span class="btn-text">Host Game</span>
+            </button>
+            <button class="btn btn-secondary" id="btnJoinGame">
+                <span class="btn-icon">🔗</span>
+                <span class="btn-text">Join Game</span>
+            </button>
+            <button class="btn btn-tertiary" id="btnLocalPlay">
+                <span class="btn-icon">🎮</span>
+                <span class="btn-text">Local Play (Solo)</span>
+            </button>
+            <button class="btn btn-tertiary" id="btnHowToPlay">
+                <span class="btn-icon">📖</span>
+                <span class="btn-text">How To Play</span>
+            </button>
+        </div>
+
+        <div class="crew-illustration">
+            <div class="crewmate" style="--color: #c51111;"></div>
+            <div class="crewmate" style="--color: #132ed2;"></div>
+            <div class="crewmate" style="--color: #11802d;"></div>
+            <div class="crewmate" style="--color: #ee54bb;"></div>
+            <div class="crewmate" style="--color: #f6f658;"></div>
+        </div>
+
+        <p class="version-text">v2.0 - WASD/Arrows to move | Space for tasks | Q to kill (imposter)</p>
+    </div>
+
+    <!-- Host Game Screen -->
+    <div class="screen" id="hostScreen">
+        <div class="screen-header">
+            <button class="btn-back" id="btnBackFromHost">←</button>
+            <h2>Host New Game</h2>
+        </div>
+
+        <div class="setup-container">
+            <div class="character-preview">
+                <div class="character-body" id="hostCharacterPreview">
+                    <div class="character-visor"></div>
+                    <div class="character-backpack"></div>
+                </div>
+                <div class="character-shadow"></div>
+            </div>
+
+            <div class="setup-options">
+                <div class="input-group">
+                    <label for="hostPlayerName">Your Name</label>
+                    <input type="text" id="hostPlayerName" placeholder="Enter your name" maxlength="12" value="Host">
+                </div>
+
+                <div class="color-picker">
+                    <label>Choose Your Color</label>
+                    <div class="color-options" id="hostColorOptions">
+                        <button class="color-option selected" data-color="#c51111"
+                            style="background: #c51111;"></button>
+                        <button class="color-option" data-color="#132ed2" style="background: #132ed2;"></button>
+                        <button class="color-option" data-color="#11802d" style="background: #11802d;"></button>
+                        <button class="color-option" data-color="#ee54bb" style="background: #ee54bb;"></button>
+                        <button class="color-option" data-color="#f6f658" style="background: #f6f658;"></button>
+                        <button class="color-option" data-color="#f07d0d" style="background: #f07d0d;"></button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large" id="btnCreateRoom">
+                    <span class="btn-text">Create Room</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Game Screen -->
+    <div class="screen" id="joinScreen">
+        <div class="screen-header">
+            <button class="btn-back" id="btnBackFromJoin">←</button>
+            <h2>Join Game</h2>
+        </div>
+
+        <div class="setup-container">
+            <div class="character-preview">
+                <div class="character-body" id="joinCharacterPreview">
+                    <div class="character-visor"></div>
+                    <div class="character-backpack"></div>
+                </div>
+                <div class="character-shadow"></div>
+            </div>
+
+            <div class="setup-options">
+                <div class="input-group">
+                    <label for="joinPlayerName">Your Name</label>
+                    <input type="text" id="joinPlayerName" placeholder="Enter your name" maxlength="12">
+                </div>
+
+                <div class="input-group">
+                    <label for="roomCodeInput">Room Code</label>
+                    <input type="text" id="roomCodeInput" placeholder="Enter 6-digit code" maxlength="6"
+                        style="text-transform: uppercase;">
+                </div>
+
+                <div class="color-picker">
+                    <label>Choose Your Color</label>
+                    <div class="color-options" id="joinColorOptions">
+                        <button class="color-option" data-color="#c51111" style="background: #c51111;"></button>
+                        <button class="color-option selected" data-color="#132ed2"
+                            style="background: #132ed2;"></button>
+                        <button class="color-option" data-color="#11802d" style="background: #11802d;"></button>
+                        <button class="color-option" data-color="#ee54bb" style="background: #ee54bb;"></button>
+                        <button class="color-option" data-color="#f6f658" style="background: #f6f658;"></button>
+                        <button class="color-option" data-color="#f07d0d" style="background: #f07d0d;"></button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large" id="btnJoinRoom">
+                    <span class="btn-text">Join Room</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lobby Screen -->
+    <div class="screen" id="lobbyScreen">
+        <div class="screen-header">
+            <button class="btn-back" id="btnBackFromLobby">←</button>
+            <h2>Game Lobby</h2>
+            <div class="room-code">
+                <span>Room:</span>
+                <span class="code" id="roomCode">------</span>
+                <button class="btn-copy" id="btnCopyCode">📋</button>
+            </div>
+        </div>
+
+        <div class="lobby-container">
+            <div class="players-grid" id="playersGrid"></div>
+
+            <div class="lobby-info">
+                <div class="player-count">
+                    <span id="currentPlayers">1</span>/<span id="maxPlayers">10</span> Players
+                </div>
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Local Game</span>
+                </div>
+            </div>
+
+            <div class="game-settings" id="gameSettingsPanel">
+                <h3>Game Settings</h3>
+                <div class="setting-item">
+                    <span>Imposters</span>
+                    <div class="setting-control">
+                        <button class="btn-adjust" id="btnDecreaseImposters">-</button>
+                        <span id="imposterCount">1</span>
+                        <button class="btn-adjust" id="btnIncreaseImposters">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <span>Discussion Time</span>
+                    <div class="setting-control">
+                        <button class="btn-adjust" id="btnDecreaseMeetingTime">-</button>
+                        <span id="meetingTime">60</span>s
+                        <button class="btn-adjust" id="btnIncreaseMeetingTime">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="btnStartGame">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Screen - Camera Follows Player with Fog of War -->
+    <div class="screen" id="gameScreen">
+        <!-- Fog of War Overlay -->
+        <div class="fog-of-war" id="fogOfWar"></div>
+
+        <div class="game-hud">
+            <div class="hud-left">
+                <div class="task-progress">
+                    <span class="task-label">Tasks</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="taskProgress"></div>
+                    </div>
+                    <span class="task-count" id="taskCount">0/5</span>
+                </div>
+            </div>
+            <div class="hud-center">
+                <div class="role-badge crewmate" id="roleBadge">CREWMATE</div>
+            </div>
+            <div class="hud-right">
+                <button class="btn-action btn-use hidden" id="btnUse">USE</button>
+                <button class="btn-action btn-emergency hidden" id="btnEmergency">🚨 EMERGENCY</button>
+                <button class="btn-action btn-kill hidden" id="btnKill">KILL</button>
+                <button class="btn-action btn-report hidden" id="btnReport">REPORT</button>
+            </div>
+        </div>
+
+        <!-- Game World - Camera follows player -->
+        <div class="game-world" id="gameWorld">
+            <canvas id="gameCanvas" width="2000" height="1500"></canvas>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="mobile-controls" id="mobileControls">
+            <div class="joystick-container">
+                <button class="control-btn" data-direction="up">▲</button>
+                <div class="control-row">
+                    <button class="control-btn" data-direction="left">◀</button>
+                    <button class="control-btn" data-direction="right">▶</button>
+                </div>
+                <button class="control-btn" data-direction="down">▼</button>
+            </div>
+        </div>
+
+        <!-- Task Panel -->
+        <div class="task-panel hidden" id="taskPanel">
+            <div class="task-modal">
+                <button class="btn-close-task" id="btnCloseTask">✕</button>
+                <div class="task-content" id="taskContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Role Reveal Screen -->
+    <div class="screen" id="roleRevealScreen">
+        <div class="role-reveal-container">
+            <div class="role-reveal-animation">
+                <div class="reveal-character" id="revealCharacter"></div>
+            </div>
+            <h1 class="role-reveal-title" id="roleRevealTitle">CREWMATE</h1>
+            <p class="role-reveal-subtitle" id="roleRevealSubtitle">Complete your tasks and find the imposter!</p>
+            <div class="imposter-teammates hidden" id="imposterTeammates">
+                <p>Your teammate(s):</p>
+                <div class="teammate-list" id="teammateList"></div>
+            </div>
+            <button class="btn btn-primary" id="btnStartPlaying">Start Playing</button>
+        </div>
+    </div>
+
+    <!-- Meeting Screen - Redesigned -->
+    <div class="screen" id="meetingScreen">
+        <div class="meeting-container">
+            <div class="meeting-header">
+                <h2 class="meeting-title">
+                    <span class="emergency-icon">🚨</span>
+                    <span id="meetingType">EMERGENCY MEETING</span>
+                </h2>
+                <div class="meeting-timer">
+                    <span id="meetingTimeLeft">60</span>s
+                </div>
+            </div>
+
+            <div class="meeting-reporter" id="meetingReporter" style="display: none;">
+                <span class="reporter-icon">💀</span>
+                <span id="reporterText">Body reported!</span>
+            </div>
+
+            <!-- Phase Indicator -->
+            <div class="meeting-phase">
+                <div class="phase-step active" data-phase="discuss">1. Express Emotions</div>
+                <div class="phase-step" data-phase="listen">2. Listen & Analyze</div>
+                <div class="phase-step" data-phase="vote">3. Vote</div>
+            </div>
+
+            <!-- Discussion Phase: Select player and give emotions -->
+            <div class="meeting-section" id="discussionSection">
+                <h3>🎨 Phase 1: Express Through Sound</h3>
+                <p class="section-hint">In this world of colors and sounds, emotions are your language. Click a colored
+                    player, then express your feelings through emotional sounds. Listen as others do the same...</p>
+
+                <div class="player-grid-meeting" id="playerGridMeeting">
+                    <!-- Player cards generated here -->
+                </div>
+
+                <!-- Selected player indicator -->
+                <div class="selected-player-panel hidden" id="selectedPlayerPanel">
+                    <div class="selected-player-info">
+                        <div class="selected-crewmate" id="selectedCrewmate"></div>
+                        <span class="selected-name" id="selectedName">Select a player</span>
+                    </div>
+
+                    <!-- Emotion buttons -->
+                    <div class="emotion-buttons">
+                        <button class="emotion-btn suspicious" data-emotion="suspicious" title="Suspicious">
+                            <span class="emotion-icon">🤔</span>
+                            <span class="emotion-label">Sus</span>
+                        </button>
+                        <button class="emotion-btn accusing" data-emotion="accusing" title="Accusing">
+                            <span class="emotion-icon">👆</span>
+                            <span class="emotion-label">Accuse</span>
+                        </button>
+                        <button class="emotion-btn defending" data-emotion="defending" title="Defending">
+                            <span class="emotion-icon">🛡️</span>
+                            <span class="emotion-label">Defend</span>
+                        </button>
+                        <button class="emotion-btn confused" data-emotion="confused" title="Confused">
+                            <span class="emotion-icon">😕</span>
+                            <span class="emotion-label">Unsure</span>
+                        </button>
+                        <button class="emotion-btn innocent" data-emotion="innocent" title="Innocent">
+                            <span class="emotion-icon">✅</span>
+                            <span class="emotion-label">Clear</span>
+                        </button>
+                    </div>
+
+                    <button class="btn btn-secondary btn-small" id="btnSendEmotion">Send Emotion</button>
+                </div>
+            </div>
+
+            <!-- Listen Phase: See accumulated emotions -->
+            <div class="meeting-section hidden" id="listenSection">
+                <h3>🎵 Phase 2: Decode the Sound Patterns</h3>
+                <p class="section-hint">Click on any colored player to hear their emotional symphony. Multiple sounds
+                    layer together - can you hear the truth in the patterns?</p>
+
+                <div class="emotion-summary-grid" id="emotionSummaryGrid">
+                    <!-- Shows each player with their received emotions -->
+                </div>
+
+                <!-- Audio visualizer for selected player -->
+                <div class="emotion-audio-panel hidden" id="emotionAudioPanel">
+                    <h4>Emotions about <span id="emotionTargetName">Player</span></h4>
+                    <div class="emotion-visualizer" id="emotionVisualizer">
+                        <div class="visualizer-lights" id="visualizerLights"></div>
+                        <div class="visualizer-bars" id="visualizerBars"></div>
+                    </div>
+                    <div class="emotion-breakdown" id="emotionBreakdown">
+                        <!-- Shows count of each emotion -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vote Phase -->
+            <div class="meeting-section hidden" id="voteSection">
+                <h3>🗳️ Phase 3: Vote by Color</h3>
+                <p class="section-hint">Based on the colors and sounds, who do you think is the imposter? Vote them out
+                    or skip...</p>
+
+                <div class="vote-grid" id="voteGrid">
+                    <!-- Vote buttons for each player -->
+                </div>
+
+                <button class="btn btn-tertiary" id="btnSkipVote">Skip Vote</button>
+            </div>
+
+            <!-- Phase Navigation -->
+            <div class="meeting-nav">
+                <button class="btn btn-secondary hidden" id="btnPrevPhase">← Back</button>
+                <button class="btn btn-primary" id="btnNextPhase">Next Phase →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div class="screen" id="resultsScreen">
+        <div class="results-container">
+            <div class="results-stage">
+                <div class="ejected-player" id="ejectedPlayer">
+                    <div class="ejected-body"></div>
+                </div>
+            </div>
+            <div class="results-text">
+                <h2 id="resultsTitle">Someone was ejected.</h2>
+                <p id="resultsSubtitle"></p>
+                <p id="impostersRemaining"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div class="screen" id="victoryScreen">
+        <div class="victory-container">
+            <h1 class="victory-title" id="victoryTitle">VICTORY</h1>
+            <p class="victory-subtitle" id="victorySubtitle">Crewmates Win!</p>
+            <div class="victory-buttons">
+                <button class="btn btn-primary" id="btnPlayAgain">Play Again</button>
+                <button class="btn btn-secondary" id="btnBackToMenu">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- How To Play Modal -->
+    <div class="modal" id="howToPlayModal">
+        <div class="modal-content">
+            <button class="btn-close" id="btnCloseHowTo">✕</button>
+            <h2>How To Play</h2>
+
+            <div class="tutorial-slides" id="tutorialSlides">
+                <div class="tutorial-slide active">
+                    <div class="slide-icon">🎮</div>
+                    <h3>Controls</h3>
+                    <p><strong>WASD/Arrows</strong> - Move<br>
+                        <strong>Space</strong> - Use task when near<br>
+                        <strong>Q</strong> - Kill (Imposter only)<br>
+                        <strong>R</strong> - Report body
+                    </p>
+                </div>
+                <div class="tutorial-slide">
+                    <div class="slide-icon">👁️</div>
+                    <h3>Limited Vision</h3>
+                    <p>You can only see a small area around you. Watch out for imposters lurking in the dark!</p>
+                </div>
+                <div class="tutorial-slide">
+                    <div class="slide-icon">🎵</div>
+                    <h3>Light & Sound Meetings</h3>
+                    <p>In meetings, select a player and give them an emotion. Everyone's emotions are combined - listen
+                        for patterns!</p>
+                </div>
+                <div class="tutorial-slide">
+                    <div class="slide-icon">🗳️</div>
+                    <h3>Voting</h3>
+                    <p>After discussing with light & sound, vote for who you think is sus. Most votes = ejected!</p>
+                </div>
+            </div>
+
+            <div class="tutorial-nav">
+                <button class="btn btn-secondary" id="btnPrevSlide">← Previous</button>
+                <div class="slide-dots" id="slideDots"></div>
+                <button class="btn btn-primary" id="btnNextSlide">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="audio.js"></script>
+    <script src="multiplayer.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
