@@ -129,6 +129,7 @@ body {
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         transform: translate(-50%, -50%) scale(1);
@@ -291,6 +292,7 @@ body {
 }
 
 @keyframes floatCrewmates {
+
     0%,
     100% {
         transform: translateY(0);
@@ -307,7 +309,7 @@ body {
     background: var(--color);
     border-radius: 50% 50% 42% 42% / 62% 62% 38% 38%;
     position: relative;
-    box-shadow: 
+    box-shadow:
         inset -12px -10px 20px rgba(0, 0, 0, 0.35),
         inset 8px 8px 15px rgba(255, 255, 255, 0.1),
         0 8px 20px rgba(0, 0, 0, 0.4);
@@ -397,7 +399,7 @@ body {
     background: var(--red);
     border-radius: 50% 50% 42% 42% / 62% 62% 38% 38%;
     position: relative;
-    box-shadow: 
+    box-shadow:
         inset -18px -15px 30px rgba(0, 0, 0, 0.35),
         inset 10px 10px 20px rgba(255, 255, 255, 0.12),
         0 12px 25px rgba(0, 0, 0, 0.4);
@@ -413,7 +415,7 @@ body {
     height: 52px;
     background: linear-gradient(135deg, #9ebdce, #5a9fb5);
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
         inset -3px -3px 8px rgba(0, 0, 0, 0.25),
         0 4px 12px rgba(56, 255, 221, 0.2);
 }
@@ -426,7 +428,7 @@ body {
     height: 65px;
     background: inherit;
     border-radius: 14px;
-    box-shadow: 
+    box-shadow:
         inset -8px -6px 15px rgba(0, 0, 0, 0.3),
         0 4px 12px rgba(0, 0, 0, 0.3);
 }
@@ -801,6 +803,7 @@ body {
 }
 
 @keyframes imposterPulse {
+
     0%,
     100% {
         box-shadow: 0 4px 15px rgba(197, 17, 17, 0.4);
@@ -861,6 +864,7 @@ body {
 }
 
 @keyframes emergencyPulse {
+
     0%,
     100% {
         box-shadow: 0 4px 15px rgba(246, 246, 88, 0.4);
@@ -1120,6 +1124,7 @@ body {
 }
 
 @keyframes emergencyFlash {
+
     0%,
     100% {
         opacity: 1;
@@ -1718,6 +1723,7 @@ body {
 }
 
 @keyframes victoryGlow {
+
     0%,
     100% {
         filter: brightness(1);
@@ -1998,7 +2004,9 @@ body {
         gap: 0.5rem;
     }
 
-    .hud-left, .hud-center, .hud-right {
+    .hud-left,
+    .hud-center,
+    .hud-right {
         gap: 0.5rem;
     }
 
@@ -2011,7 +2019,8 @@ body {
         height: 8px;
     }
 
-    .task-label, .task-count {
+    .task-label,
+    .task-count {
         font-size: 0.75rem;
     }
 
