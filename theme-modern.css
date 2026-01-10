@@ -1,0 +1,532 @@
+/* ========================================
+   IMPOSTER HUNT - Modern Semi-Light Theme
+   3D Elements, Glassmorphism, Animations
+   ======================================== */
+
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #e1e8ed;
+    --bg-card: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --bg-dark: #2d3748;
+
+    /* Accent Colors */
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    --accent-success: #48bb78;
+    --accent-warning: #ed8936;
+    --accent-danger: #f56565;
+    --accent-info: #4299e1;
+
+    /* Player Colors - Vibrant */
+    --red: #ff6b6b;
+    --blue: #4dabf7;
+    --green: #51cf66;
+    --pink: #ff6bcb;
+    --yellow: #ffd43b;
+    --orange: #ff922b;
+    --cyan: #22d3ee;
+    --lime: #a3e635;
+    --purple: #a78bfa;
+
+    /* Text Colors */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-light: #718096;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --shadow-3d: 0 10px 30px rgba(102, 126, 234, 0.3);
+
+    /* Fonts */
+    --font-display: 'Poppins', 'Russo One', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-primary);
+    position: relative;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    animation: backgroundPulse 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Screen System with 3D */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: screenSlideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes screenSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Glass Cards with 3D Effect */
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-3d);
+    padding: 2rem;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Logo with 3D Effect */
+.logo-container {
+    text-align: center;
+    margin-top: 2rem;
+    position: relative;
+    perspective: 1000px;
+}
+
+.game-logo {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: logo3D 3s ease-in-out infinite;
+}
+
+@keyframes logo3D {
+
+    0%,
+    100% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateX(5deg) rotateY(5deg);
+    }
+}
+
+.logo-text.imposter {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+    letter-spacing: 0.2em;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.logo-text.hunt {
+    background: linear-gradient(135deg, #4dabf7, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.3em;
+    font-size: 3rem;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.8));
+    }
+}
+
+/* 3D Buttons */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--accent-info), #3182ce);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--accent-success), #38a169);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--accent-danger), #e53e3e);
+    color: white;
+}
+
+/* 3D Crewmate */
+.crewmate-3d {
+    width: 80px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: float3D 3s ease-in-out infinite;
+}
+
+@keyframes float3D {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateY(10deg);
+    }
+}
+
+.crewmate-body {
+    width: 100%;
+    height: 100%;
+    background: var(--color, var(--red));
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    position: relative;
+    box-shadow:
+        inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+        0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateZ(20px);
+}
+
+.crewmate-visor {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    width: 50px;
+    height: 35px;
+    background: linear-gradient(135deg, #e3f2fd, #90caf9);
+    border-radius: 50%;
+    box-shadow:
+        inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateZ(30px);
+}
+
+.crewmate-backpack {
+    position: absolute;
+    top: 30px;
+    left: -15px;
+    width: 20px;
+    height: 45px;
+    background: inherit;
+    border-radius: 10px;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3);
+    transform: translateZ(10px);
+}
+
+/* Meeting Screen Enhancements */
+.meeting-container {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: var(--shadow-3d);
+}
+
+.meeting-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.meeting-type {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-danger), var(--accent-warning));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Phase Indicators with 3D */
+.meeting-phases {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.phase-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.phase-step.active {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.phase-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.phase-step.active .phase-number {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent-primary);
+}
+
+/* Player Cards with 3D */
+.meeting-player-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-md);
+}
+
+.meeting-player-card:hover:not(.dead) {
+    transform: translateY(-5px) rotateY(5deg);
+    box-shadow: var(--shadow-xl);
+}
+
+.meeting-player-card.selected {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* Emotion Indicators with Animation */
+.emotion-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Vote Buttons with 3D */
+.vote-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border: 3px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+}
+
+.vote-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.vote-btn.selected {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-logo {
+        font-size: 3rem;
+    }
+
+    .logo-text.hunt {
+        font-size: 2rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+    }
+}
